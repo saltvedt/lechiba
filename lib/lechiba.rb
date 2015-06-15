@@ -1,3 +1,5 @@
+require 'colorize'
+
 require_relative 'lechiba/version'
 require_relative 'lechiba/position'
 require_relative 'lechiba/direction'
@@ -25,6 +27,7 @@ class Lechiba
   def run_game
     loop do 
       puts @board.to_s
+      puts  "-" * 60
       @board.step!
       break if gets.strip != ""
     end

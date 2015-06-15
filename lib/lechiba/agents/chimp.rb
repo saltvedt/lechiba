@@ -1,3 +1,5 @@
+require 'colorize'
+
 class Chimp < Agent
   def next_step(map)
     target = find_nearest(Banana, map)
@@ -9,6 +11,10 @@ class Chimp < Agent
       puts "Chimp moving towards #{target} where direction is #{direction_towards(target)}"
       return self.class.new(position.relative_to(direction_towards(target)))
     end
+  end
+
+  def to_s
+    "🐵".green
   end
 
   private

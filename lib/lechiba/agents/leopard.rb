@@ -10,4 +10,8 @@ class Leopard < Agent
       return self.class.new(position.relative_to(Direction.random))
     end
   end
+
+  def to_s
+    "😸".red
+  end
 end

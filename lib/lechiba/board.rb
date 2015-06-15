@@ -44,6 +44,7 @@ class Board
 
   def initialize(size = 20, grid = nil)
     @grid = grid || Board.new_empty_grid(size)
+    @clean_grid = true
     @step_count  = 0
   end
 
@@ -86,7 +87,11 @@ class Board
   def to_s
     grid.map do |row|
       row.map do |cell|
-        "[#{cell}]"
+        if @clean_grid
+          "#{cell}"
+        else
+          "[#{cell}]"
+        end
       end.join
     end.join("\n")
   end
