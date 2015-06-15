@@ -33,4 +33,8 @@ class Position
     return Direction.new(dir_x, dir_y)
   end
 
+  def eql?(another_position)
+    another_position.x == x && another_position.y == y
+  end
+
 end

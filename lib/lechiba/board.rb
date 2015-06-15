@@ -65,15 +65,16 @@ class Board
     
     grid.each_with_index do |row, x|
       row.each_with_index do |cell, y|
-
-        new_entitiy_of_cell = cell.next_step(self.dup)
-        
-        # TODO: validate that position of new entitiy is legal 
-        
-        x = new_entitiy_of_cell.position.x
-        y = new_entitiy_of_cell.position.y
-        
-        new_grid[x][y] = new_entitiy_of_cell
+        unless cell.instance_of?(EmptyCell)
+          new_entitiy_of_cell = cell.next_step(self.dup)
+          
+          # TODO: validate that position of new entitiy is legal 
+          
+          x = new_entitiy_of_cell.position.x
+          y = new_entitiy_of_cell.position.y
+          
+          new_grid[x][y] = new_entitiy_of_cell
+        end
       end
     end
   
