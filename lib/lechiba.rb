@@ -15,7 +15,7 @@ require_relative 'lechiba/board'
 class Lechiba
   def initialize
     @board = Board.new(30)
-    simple_hunting
+    chaos_scenario
   end
 
   def chaos_scenario

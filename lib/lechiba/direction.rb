@@ -11,7 +11,7 @@ class Direction
   end
 
   def reverse
-    self.new(x * -1, y * -1)
+    Direction.new(x * -1, y * -1)
   end
 
   def to_s
