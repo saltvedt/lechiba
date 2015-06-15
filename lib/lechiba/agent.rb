@@ -1,3 +1,6 @@
+# TODO: Agents have "sight-range"
+# TODO: Agents cannot walk off the edge of the universe
+# TODO: Agents cannot overwrite other entities except L > C > B
 class Agent
   attr_accessor :position
 

@@ -1,6 +1,5 @@
+# TODO: If a Leopard stops moving for 3 steps it turns invisible.
 class Leopard < Agent
-
-  # TODO: move randomly for X steps, hide for Y, be invsible after Z
   def next_step(map)
     target = find_nearest(Chimp, map)
     if target.present?

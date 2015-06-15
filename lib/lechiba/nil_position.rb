@@ -16,5 +16,4 @@ class NilPosition < Position
   def direction_towards(position)
     raise "NotImplemented"
   end
-
 end

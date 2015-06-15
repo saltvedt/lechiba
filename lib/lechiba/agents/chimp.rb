@@ -1,5 +1,4 @@
-require 'colorize'
-
+# TODO: Chimps can send "shout" to broadcast massages about the position of entities to every chimp on the board
 class Chimp < Agent
   def next_step(map)
     target = find_nearest(Banana, map)
@@ -25,7 +24,6 @@ class Chimp < Agent
 
   def close_to? (entity)
     considered_close_if_within = 2
-
     return distance_to(entity) < considered_close_if_within
   end
 end

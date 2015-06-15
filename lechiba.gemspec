@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Lechiba::VERSION
   spec.authors       = ["Torstein Saltvedt"]
   spec.email         = ["torstein.saltvedt@gmail.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{A silly AI game thingy.}
+  spec.description   = %q{A silly AI game thingy featuring leopards, chimps and bananas.}
   spec.homepage      = ""
   spec.license       = "MIT"
 

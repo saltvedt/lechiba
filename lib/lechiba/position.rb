@@ -13,22 +13,23 @@ class Position
     Position.new(x + direction.x, y + direction.y)
   end
 
+  # There has to be a better way....
   def direction_towards(position)
     dir_x = if x > position.x
-          -1
-        elsif x == position.x
-          0
-        else
-          1
-        end
+              -1
+            elsif x == position.x
+              0
+            else
+              1
+            end
 
     dir_y = if y > position.y
-          -1
-        elsif y == position.y
-          0
-        else
-          1
-        end
+              -1
+            elsif y == position.y
+              0
+            else
+              1
+            end
 
     return Direction.new(dir_x, dir_y)
   end
@@ -36,5 +37,4 @@ class Position
   def eql?(another_position)
     another_position.x == x && another_position.y == y
   end
-
 end

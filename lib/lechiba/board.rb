@@ -1,5 +1,4 @@
 class Board
-
   ENTITY_CHARS = {
     "C" => Chimp,
     "B" => Banana,
@@ -54,13 +53,8 @@ class Board
     @grid[x][y] = entity
   end
 
-  def strip_agent_internals
-    grid.deep_map do |cell|
-      cell.class
-    end
-  end
-
   def step!
+    @step_count += 1
     new_grid = Board.new_empty_grid(grid.size)
     
     grid.each_with_index do |row, x|
@@ -97,4 +91,3 @@ class Board
     end.join("\n")
   end
 end
-
