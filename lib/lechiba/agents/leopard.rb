@@ -4,7 +4,7 @@ class Leopard < Agent
   def next_step(map)
     target = find_nearest(Chimp, map)
     puts "Leopard moving towards #{target} where direction is #{direction_towards(target)}"
-    return self.class.new(pos.relative_to(direction_towards(target)))
+    return self.class.new(position.relative_to(direction_towards(target)))
     #return [rand(-1..1), rand(-1..1)]
   end
 end

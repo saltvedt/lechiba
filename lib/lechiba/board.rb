@@ -45,8 +45,8 @@ class Board
   end
 
   def place!(entity)
-    x = entity.pos.x
-    y = entity.pos.y
+    x = entity.position.x
+    y = entity.position.y
     @grid[x][y] = entity
   end
 
@@ -66,8 +66,8 @@ class Board
         
         # TODO: validate that position of new entitiy is legal 
         
-        x = new_entitiy_of_cell.pos.x
-        y = new_entitiy_of_cell.pos.y
+        x = new_entitiy_of_cell.position.x
+        y = new_entitiy_of_cell.position.y
         
         new_grid[x][y] = new_entitiy_of_cell
       end

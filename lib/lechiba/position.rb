@@ -5,8 +5,8 @@ class Position
     @x, @y = x, y
   end
 
-  def distance_to(pos)
-    Math.hypot(pos.x - @x, pos.y - @y)
+  def distance_to(position)
+    Math.hypot(position.x - @x, position.y - @y)
   end
 
   def relative_to(direction)
