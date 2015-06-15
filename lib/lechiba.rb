@@ -15,15 +15,19 @@ require_relative 'lechiba/board'
 class Lechiba
   def initialize
     @board = Board.new(30)
-    place_entities_on_grid
+    simple_hunting
   end
 
-  def place_entities_on_grid
+  def chaos_scenario
     @board.place!(Banana.new(Position.new(1,5)))
     @board.place!(Banana.new(Position.new(7,5)))
     @board.place!(Banana.new(Position.new(11,7)))
     @board.place!(Banana.new(Position.new(15,10)))
-    @board.place!(Banana.new(Position.new(18,15)))
+    @board.place!(Banana.new(Position.new(15,10)))
+    @board.place!(Banana.new(Position.new(24,10)))
+    @board.place!(Banana.new(Position.new(25,28)))
+    @board.place!(Banana.new(Position.new(29,25)))
+    @board.place!(Banana.new(Position.new(21,1)))
 
     @board.place!(Leopard.new(Position.new(25,25)))
     @board.place!(Leopard.new(Position.new(7,7)))
@@ -32,6 +36,24 @@ class Lechiba
     @board.place!(Chimp.new(Position.new(22,4)))
     @board.place!(Chimp.new(Position.new(15,24)))
     @board.place!(Chimp.new(Position.new(29,8)))
+  end
+
+  def chimp_paradise
+    @board.place!(Banana.new(Position.new(1,5)))
+    @board.place!(Banana.new(Position.new(7,5)))
+    @board.place!(Banana.new(Position.new(11,7)))
+    @board.place!(Banana.new(Position.new(15,10)))
+    @board.place!(Banana.new(Position.new(15,10)))
+    @board.place!(Banana.new(Position.new(24,10)))
+    @board.place!(Banana.new(Position.new(25,28)))
+    @board.place!(Banana.new(Position.new(29,25)))
+    @board.place!(Banana.new(Position.new(21,1)))
+    @board.place!(Chimp.new(Position.new(22,4)))
+  end
+
+  def simple_hunting
+    @board.place!(Leopard.new(Position.new(25,25)))
+    @board.place!(Chimp.new(Position.new(15,24)))
   end
 
   def run_game
