@@ -1,31 +1,21 @@
 # Lechiba
 
-TODO: Write a gem description
+## Rules of Game
+
+Agents can move one tile in any direction once per step. Agents have sight range.
+
+Leopards score points by eating Chimps. Leopards can turn invisble when not moving.
+
+Chimps score points by eating bananas. Chimps can tell every other chimp on the board what they see (or lie about it!).
+
+Bananas are eaten by Chimps. They regenerate every X steps.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Clone, run bundle install, then run:
 
-```ruby
-gem 'lechiba'
-```
+    $ ruby lib/lechiba.rb
 
-And then execute:
+## How to Play
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install lechiba
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/lechiba/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Create a smart Chimp class. 
