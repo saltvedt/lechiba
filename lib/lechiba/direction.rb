@@ -1,4 +1,9 @@
 class Direction
+
+  def self.random
+    Direction.new(rand(-1..1), rand(-1..1))
+  end
+
   attr_accessor :x, :y
 
   def initialize(x, y)

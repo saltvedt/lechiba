@@ -3,8 +3,11 @@ class Leopard < Agent
   # TODO: move randomly for X steps, hide for Y, be invsible after Z
   def next_step(map)
     target = find_nearest(Chimp, map)
-    puts "Leopard moving towards #{target} where direction is #{direction_towards(target)}"
-    return self.class.new(position.relative_to(direction_towards(target)))
-    #return [rand(-1..1), rand(-1..1)]
+    if target.present?
+      puts "Leopard moving towards #{target} where direction is #{direction_towards(target)}"
+      return self.class.new(position.relative_to(direction_towards(target)))
+    else
+      return self.class.new(position.relative_to(Direction.random))
+    end
   end
 end

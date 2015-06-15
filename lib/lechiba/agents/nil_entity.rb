@@ -1,6 +1,7 @@
-class NilEntity
+class NilEntity < Agent
   def initialize(msg)
     @msg = msg
+    @position = NilPosition.new(-1, -1)
   end
 
   def present?
@@ -8,6 +9,6 @@ class NilEntity
   end
 
   def to_s
-    inspect
+    "<NilEntity @msg=\"#{@msg}\">"
   end
 end

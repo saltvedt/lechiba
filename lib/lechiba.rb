@@ -6,6 +6,7 @@ require_relative 'lechiba/agents/empty_cell'
 require_relative 'lechiba/agents/banana'
 require_relative 'lechiba/agents/leopard'
 require_relative 'lechiba/agents/chimp'
+require_relative 'lechiba/nil_position'
 require_relative 'lechiba/agents/nil_entity'
 require_relative 'lechiba/board'
 
