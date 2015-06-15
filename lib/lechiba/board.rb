@@ -14,6 +14,9 @@ class Board
     line = string.split("")
     interpreted_line = line.map { |char| char_to_entity(char) }
 
+    # WIP! Try something like this, except with index?
+    #interpreted_line = line.map { |char| char_to_entity(char).new(Position.new(0,1)) }
+
     neg = Array.new(1) { Array.new(string.size) }
     neg.each_with_index do |row, x|
       row.each_with_index do |cell, y|
