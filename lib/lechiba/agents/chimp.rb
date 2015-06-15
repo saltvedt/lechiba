@@ -8,8 +8,12 @@ class Chimp < Agent
       puts "Chimp moving away from #{enemy} where direction is #{direction_away_from(enemy)}"
       return self.class.new(position.relative_to(direction_away_from(enemy)))
     else
-      puts "Chimp moving towards #{target} where direction is #{direction_towards(target)}"
-      return self.class.new(position.relative_to(direction_towards(target)))
+      if target.present?
+        puts "Chimp moving towards #{target} where direction is #{direction_towards(target)}"
+        return self.class.new(position.relative_to(direction_towards(target)))
+      else
+        return self.class.new(position.relative_to(Direction.random))
+      end
     end
   end
 
