@@ -14,14 +14,24 @@ require_relative 'lechiba/board'
 
 class Lechiba
   def initialize
-    @board = Board.new(20)
+    @board = Board.new(30)
     place_entities_on_grid
   end
 
   def place_entities_on_grid
-    @board.place!(Banana.new(Position.new(5,5)))
-    @board.place!(Leopard.new(Position.new(6,4)))
+    @board.place!(Banana.new(Position.new(1,5)))
+    @board.place!(Banana.new(Position.new(7,5)))
+    @board.place!(Banana.new(Position.new(11,7)))
+    @board.place!(Banana.new(Position.new(15,10)))
+    @board.place!(Banana.new(Position.new(18,15)))
+
+    @board.place!(Leopard.new(Position.new(25,25)))
+    @board.place!(Leopard.new(Position.new(7,7)))
+
     @board.place!(Chimp.new(Position.new(2,4)))
+    @board.place!(Chimp.new(Position.new(22,4)))
+    @board.place!(Chimp.new(Position.new(15,24)))
+    @board.place!(Chimp.new(Position.new(29,8)))
   end
 
   def run_game
