@@ -29,13 +29,10 @@ class Lechiba
     @board.place!(Banana.new(Position.new(29,25)))
     @board.place!(Banana.new(Position.new(21,1)))
 
-    @board.place!(Leopard.new(Position.new(25,25)))
     @board.place!(Leopard.new(Position.new(7,7)))
 
-    @board.place!(Chimp.new(Position.new(2,4)))
+    @board.place!(Chimp.new(Position.new(5,23)))
     @board.place!(Chimp.new(Position.new(22,4)))
-    @board.place!(Chimp.new(Position.new(15,24)))
-    @board.place!(Chimp.new(Position.new(29,8)))
   end
 
   def chimp_paradise

@@ -3,7 +3,7 @@ class Leopard < Agent
   def next_step(map)
     target = find_nearest(Chimp, map)
     if target.present?
-      puts "Leopard moving towards #{target} where direction is #{direction_towards(target)}"
+      #puts "Leopard moving towards #{target} where direction is #{direction_towards(target)}"
       return self.class.new(position.relative_to(direction_towards(target)))
     else
       return self.class.new(position.relative_to(Direction.random))
