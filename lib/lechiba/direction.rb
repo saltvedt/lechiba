@@ -12,4 +12,8 @@ class Direction
   def to_s
     "[#{x}, #{y}]"
   end
+
+  def eql?(another_direction)
+    another_direction.x == x && another_direction.y == y
+  end
 end

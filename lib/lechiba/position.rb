@@ -15,19 +15,19 @@ class Position
 
   def direction_towards(position)
     dir_x = if x > position.x
-          1
+          -1
         elsif x == position.x
           0
         else
-          -1
+          1
         end
 
     dir_y = if y > position.y
-          1
+          -1
         elsif y == position.y
           0
         else
-          -1
+          1
         end
 
     return Direction.new(dir_x, dir_y)
