@@ -1,26 +1,25 @@
 class Agent
-  attr_accessor :pos
+  attr_accessor :position
 
   def initialize(position)
-    @pos = position
+    @position = position
   end
 
   def present?
     true
   end
 
-  def find_nearest(entity_type, map)
-    nearest = map.all_known(entity_type).sort_by { |entity| distance_to(entity) }.first
+  def find_nearest(entity_type, board)
+    nearest = board.all_known(entity_type).sort_by { |entity| distance_to(entity) }.first
     nearest || NilEntity.new("No entities of type #{entity_type} found")
   end
   
   def distance_to(entity)
-    puts self
-    pos.distance_to(entity.pos)
+    position.distance_to(entity.position)
   end
 
   def direction_towards(entity)
-    pos.direction_towards(entity.pos)
+    position.direction_towards(entity.position)
   end
 
   def direction_away_from(entity)

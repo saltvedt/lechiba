@@ -1,46 +1,63 @@
 class Board
-  attr_reader :grid
 
-  def initialize(size = 20, grid = nil)
-    @grid = grid || new_empty_grid(size)
-    @step_count  = 0
+  ENTITY_CHARS = {
+    "C" => Chimp,
+    "B" => Banana,
+    "L" => Leopard
+  }
+
+  def self.char_to_entity(char)
+    entity = ENTITY_CHARS[char] || EmptyCell
   end
 
   def self.create_from_string(string)
-    
     line = string.split("")
     interpreted_line = line.map { |char| char_to_entity(char) }
-    puts interpreted_line.inspect
-
-    char_grid = [["B", "C"]]
 
     neg = Array.new(1) { Array.new(string.size) }
     neg.each_with_index do |row, x|
       row.each_with_index do |cell, y|
-        neg[x][y] = .new(Position.new(x, y))
+        neg[x][y] = EmptyCell.new(Position.new(x, y))
       end
     end
 
     grid = [interpreted_line]
 
-    Board.new(nil, grid)
+    Board.new(grid.size, grid)
   end
 
-  def self.char_to_entity(char)
-    return Chimp if char == "C"
-    return Banana if char == "B"
-    return Leopard if char == "L"
-    return EmptyCell
+  def self.new_empty_grid(size)
+    neg = Array.new(size) { Array.new(size) }
+    neg.each_with_index do |row, x|
+      row.each_with_index do |cell, y|
+        neg[x][y] = EmptyCell.new(Position.new(x, y))
+      end
+    end
+
+    return neg
   end
 
-  def place(entity)
+  attr_reader :grid
+
+  def initialize(size = 20, grid = nil)
+    @grid = grid || Board.new_empty_grid(size)
+    @step_count  = 0
+  end
+
+  def place!(entity)
     x = entity.pos.x
     y = entity.pos.y
     @grid[x][y] = entity
   end
 
+  def strip_agent_internals
+    grid.deep_map do |cell|
+      cell.class
+    end
+  end
+
   def step!
-    new_grid = new_empty_grid(grid.size)
+    new_grid = Board.new_empty_grid(grid.size)
     
     grid.each_with_index do |row, x|
       row.each_with_index do |cell, y|
@@ -70,17 +87,5 @@ class Board
       end.join
     end.join("\n")
   end
-
-  private
-
-  def new_empty_grid(size)
-    neg = Array.new(size) { Array.new(size) }
-    neg.each_with_index do |row, x|
-      row.each_with_index do |cell, y|
-        neg[x][y] = EmptyCell.new(Position.new(x, y))
-      end
-    end
-
-    return neg
-  end
 end
+

@@ -1,19 +1,35 @@
 require 'spec_helper'
 
 describe "Board" do
-	it "should exist" do
-		expect(Board.new()).to be
-	end
+  it "should exist" do
+    expect(Board.new()).to be
+  end
 
-	it "should be able to create from string" do
-		board = Board.create_from_string "C B"
-		expect(board.to_s).to eql("[C][ ][B]")
-	end
+  describe ".create_from_string" do
+    it "should be able to create from string" do
+      board = Board.create_from_string "C B"
+      expect(board.to_s).to eql("[Chimp][EmptyCell][Banana]")
+    end
+  end   
 
-	it "should interpret the chars in strin" do
-		board = Board.create_from_string "CBL"
-		expect(board.all_known(Chimp).count).to eql 1
-		expect(board.all_known(Banana).count).to eql 1
-		expect(board.all_known(Leopard).count).to eql 1
-	end
+  it "should interpret the chars in string" do
+    board = Board.create_from_string "CBL"
+    expect(board.all_known(Chimp).count).to eql 1
+    expect(board.all_known(Banana).count).to eql 1
+    expect(board.all_known(Leopard).count).to eql 1
+  end
+
+  describe ".new_empty_grid" do
+    it "should return an 5x5 grid when given size 5" do
+      grid = Board.new_empty_grid(5)
+      expect(grid.size).to eql 5
+      grid.each do |row|
+        expect(row.size).to eql 5
+        expect(row).to be_instance_of Array
+        row.each do |cell|
+          expect(cell).to be_instance_of EmptyCell
+        end
+      end
+    end
+  end
 end
