@@ -54,24 +54,26 @@ class Board
   end
 
   def step!
-    @step_count += 1
-    new_grid = Board.new_empty_grid(grid.size)
-    
-    grid.each_with_index do |row, x|
-      row.each_with_index do |cell, y|
-        unless cell.instance_of?(EmptyCell)
-          new_entitiy_of_cell = cell.next_step(self.dup)
-          
-          # TODO: validate that position of new entitiy is legal 
-          
-          x = new_entitiy_of_cell.position.x
-          y = new_entitiy_of_cell.position.y
-          
-          new_grid[x][y] = new_entitiy_of_cell
-        end
+    agents = all_known(Banana) + all_known(Chimp) + all_known(Leopard)
+
+    new_grid = grid.dup
+    agents.each do |agent|
+      x = agent.position.x
+      y = agent.position.y
+
+      # TODO! Dont get position from the board, not the agent
+
+      new_position_of_agent = agent.next_step(self.dup, Position.new(x,y))
+
+      new_x = new_position_of_agent.x
+      new_y = new_position_of_agent.y
+
+      if new_grid[new_x][new_y].empty?                              
+        new_grid[new_x][new_y] = agent.set_position!(Position.new(new_x, new_y))
+        new_grid[x][y] = EmptyCell.new(Position.new(x, y))
       end
     end
-  
+
     @grid = new_grid
   end
 

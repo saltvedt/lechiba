@@ -8,6 +8,11 @@ class Agent
     @position = position
   end
 
+  def set_position! (position)
+    @position = position
+    self
+  end
+
   def present?
     true
   end
@@ -18,14 +23,17 @@ class Agent
   end
   
   def distance_to(entity)
+    raise ArgumentError.new("Given entity (#{entity}) cannot be nil") if entity.nil?
     position.distance_to(entity.position)
   end
 
   def direction_towards(entity)
+    raise ArgumentError.new("Given entity (#{entity}) cannot be nil") if entity.nil?
     position.direction_towards(entity.position)
   end
 
   def direction_away_from(entity)
+    raise ArgumentError.new("Given entity (#{entity}) cannot be nil") if entity.nil?
     direction_towards(entity).reverse
   end
 
@@ -33,8 +41,9 @@ class Agent
     self.class.name[0]
   end
 
-  def next_step(map)
-    self
+  def next_step(map, position)
+    @position = position
+    position
   end
 
   def empty?

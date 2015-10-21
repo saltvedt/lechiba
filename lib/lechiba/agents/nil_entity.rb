@@ -8,6 +8,10 @@ class NilEntity < Agent
     false
   end
 
+  def nil?
+    true
+  end
+
   def to_s
     "<NilEntity @msg=\"#{@msg}\">"
   end
