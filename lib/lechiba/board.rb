@@ -53,6 +53,13 @@ class Board
     @grid[x][y] = entity
   end
 
+  def out_of_range?(x, y)
+    max_index = grid.size - 1
+    x_oor = x > max_index || x < 0 
+    y_oor = y > max_index || y < 0
+    x_oor || y_oor 
+  end
+
   def step!
     agents = all_known(Banana) + all_known(Chimp) + all_known(Leopard)
 
@@ -68,7 +75,9 @@ class Board
       new_x = new_position_of_agent.x
       new_y = new_position_of_agent.y
 
-      if new_grid[new_x][new_y].empty?                              
+      out_of_range = out_of_range?(new_x, new_y)
+
+      if not out_of_range and new_grid[new_x][new_y].empty?                    
         new_grid[new_x][new_y] = agent.set_position!(Position.new(new_x, new_y))
         new_grid[x][y] = EmptyCell.new(Position.new(x, y))
       end
